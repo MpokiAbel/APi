@@ -1,21 +1,14 @@
-var http= require('http');
-var event=require('events');
+var express = require('express');
 
-var eventEmmiter=new event.EventEmitter()
+var app= express();
 
+app.get('/tasks',function(req,rsp){
 
-var server=http.createServer(function(req,resp){
-    eventEmmiter.emit('Request','Name');
-    resp.end('Server Works');
+rsp.end('Server Woring');
 });
 
 
 
-eventEmmiter.on('Request',function(data){
-    console.log("Request has been made",data);
+app.listen(3000,function(){
+ console.log('listening to port 3000')   
 });
-
-server.listen(3000,'localhost',function(){
-
-console.log('Server started on port 3000');
-})
